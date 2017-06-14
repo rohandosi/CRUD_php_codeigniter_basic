@@ -84,7 +84,6 @@ class News extends CI_Controller{
      redirect(base_url().'index.php/news');
  }
 }
-?>
 
 
 
