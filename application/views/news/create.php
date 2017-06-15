@@ -8,7 +8,7 @@
     </tr>
     <tr>
         <td><label for="text">Text</label></td>
-        <td><textarea name="text" row="10" column="40"></textarea></td>
+        <td><textarea name="text" row="10" cols="40"></textarea></td>
     </tr>
     <tr>
         <td></td>
