@@ -17,14 +17,14 @@ class News extends CI_Controller{
  }
  public function view($slug = NULL){
 
-     $data['news_item']=$this->news_model->get_new($slug);
-     if (empty($data('news_item'))){
+     $data['news_item']=$this->news_model->get_news($slug);
+     if (empty($data['news_item'])){
          show_404();
      }
      $data['title']=$data['news_item']['title'];
 
      $this->load->view('templates/header', $data);
-     $this->load->view('news/view');
+     $this->load->view('news/view', $data);
      $this->load->view('templates/footer');
  }
 
@@ -43,14 +43,14 @@ class News extends CI_Controller{
      }
      else{
          $this->news_model->set_news();
-         $this->load->view('tempaltes/header');
+         $this->load->view('templates/header');
          $this->load->view('news/success');
          $this->load->view('templates/footer');
      }
  }
 
  public function edit(){
-     $this->uri->segmert(3);
+     $id = $this->uri->segment(3);
      if(empty($id)){
          show_404();
      }
@@ -65,7 +65,7 @@ class News extends CI_Controller{
 
      if($this->form_validation->run()===False){
          $this->load->view('templates/header', $data);
-         $this->load->view('news/edit');
+         $this->load->view('news/edit', $data);
          $this->load->view('templates/footer');
      }
      else{
@@ -74,12 +74,12 @@ class News extends CI_Controller{
      }
  }
  public function delete(){
-     $id = $this->uri->segmetn(3);
+     $id = $this->uri->segment(3);
 
      if(empty($id)){
          show_404();
      }
-    $news_item = $this-> get_news_by_id($id);
+     $news_item = $this->news_model-> get_news_by_id($id);
      $this->news_model->delete_news($id);
      redirect(base_url().'index.php/news');
  }

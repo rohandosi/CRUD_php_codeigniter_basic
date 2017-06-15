@@ -1,5 +1,5 @@
-<h2><?php echo '$title'; ?></h2>
-<?php echo 'validation_errors()'; ?>
+<h2><?php echo $title; ?></h2>
+<?php echo validation_errors(); ?>
 <?echo form_open('news/create');?>
 <table>
     <tr>
